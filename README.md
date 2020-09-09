@@ -15,6 +15,7 @@
 ### Association
 
 - has_many :user_items
+- has_many :items
 
 
 
@@ -34,7 +35,7 @@
 ### Association
 
 - has_many :user_items
-
+- belongs_to :user
 
 
 
@@ -48,16 +49,16 @@
 
 - belongs_to :item
 - has_one    :address
+- belongs_to :user
 
 
 
 
-
-## address テーブル
+## addresses テーブル
 
 | Column          | Type      | Options                       |
 | --------        | ------    | -----------                   |    
-| user_id         | integer   | null: false,foreign_key: true |
+| user_items_id   | integer   | null: false,foreign_key: true |
 | post_code       | string    | null: false                   |
 | prefecture      | integer   | null: false                   |
 | city            | string    | null: false                   |
@@ -66,4 +67,4 @@
 | phone_number    | string    | null: false                   |
 ### Association
 
--belongs_to :item
+-belongs_to :user_item
