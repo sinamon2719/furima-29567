@@ -58,7 +58,7 @@
 
 | Column          | Type      | Options                       |
 | --------        | ------    | -----------                   |    
-| user_items_id   | integer   | null: false,foreign_key: true |
+| user_item_id    | integer   | null: false,foreign_key: true |
 | post_code       | string    | null: false                   |
 | prefecture      | integer   | null: false                   |
 | city            | string    | null: false                   |
