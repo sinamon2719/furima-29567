@@ -14,8 +14,7 @@
 | birth_day        | date   | null: false |
 ### Association
 
-- has_many :items
-- has_one  :buyers
+- has_many :user_items
 
 
 
@@ -34,7 +33,7 @@
 | user_id         | integer   | null: false,foreign_key: true |
 ### Association
 
-- belongs_to :user
+- has_many :user_items
 
 
 
@@ -43,22 +42,22 @@
 
 | Column    | Type       | Options                        |
 | ------    | ---------- | ------------------------------ |
-| user_id   | references | null: false, foreign_key: true |
-| item_id   | references | null: false, foreign_key: true |
+| user_id   | integer    | null: false, foreign_key: true |
+| item_id   | integer    | null: false, foreign_key: true |
 ### Association
 
 - belongs_to :item
-- belongs_to :user
+- has_one    :address
 
 
 
 
 
-## buyers テーブル
+## address テーブル
 
 | Column          | Type      | Options                       |
 | --------        | ------    | -----------                   |    
-| user_id         | references| null: false,foreign_key: true |
+| user_id         | integer   | null: false,foreign_key: true |
 | post_code       | string    | null: false                   |
 | prefecture      | integer   | null: false                   |
 | city            | string    | null: false                   |
@@ -67,4 +66,4 @@
 | phone_number    | string    | null: false                   |
 ### Association
 
-- belongs_to :user
+-belongs_to :item
