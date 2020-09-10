@@ -6,5 +6,5 @@ class User < ApplicationRecord
   has_many :user_items
   has_many :items
 
-  validates :name, presence: true
+  validates :nickname,:email,:encrypted_password,:family_name,:family_name_kana,:first_name_kana,:birth_day,presence: true
 end
