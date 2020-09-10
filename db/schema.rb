@@ -13,23 +13,48 @@
 ActiveRecord::Schema.define(version: 2020_09_09_091059) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_item_id"
+    t.string "post_code"
+    t.integer "prefecture"
+    t.string "city"
+    t.string "address"
+    t.string "building_name"
+    t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.text "content"
+    t.integer "shipping_cost"
+    t.integer "shipping_days"
+    t.integer "prefecture"
+    t.integer "judgment"
+    t.integer "category"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "nickname", default: "", null: false
+    t.string "password", default: "", null: false
+    t.string "confirm_password", default: "", null: false
+    t.string "family_name", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "family_name_kana", default: "", null: false
+    t.string "first_name_kana", default: "", null: false
+    t.date "birthday", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
