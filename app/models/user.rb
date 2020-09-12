@@ -6,24 +6,24 @@ class User < ApplicationRecord
   has_many :user_items
   has_many :items
 
-  validates :nickname,presence: true
-  validates :email,presence: true
-  validates :password,presence: true
-  validates :encrypted_password,presence: true
-  validates :family_name,presence: true
-  validates :first_name,presence: true
-  validates :family_name_kana,presence: true
-  validates :first_name_kana,presence: true
-  validates :birth_day,presence: true
-  validates :email, uniqueness:{ case_sensitive: true }
+  validates :nickname, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
+  validates :encrypted_password, presence: true
+  validates :family_name, presence: true
+  validates :first_name, presence: true
+  validates :family_name_kana, presence: true
+  validates :first_name_kana, presence: true
+  validates :birth_day, presence: true
+  validates :email, uniqueness: { case_sensitive: true }
 
-  with_options presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i,message: '半角英数字を使用してください'}do
+  with_options presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: '半角英数字を使用してください' } do
     validates :password
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
-    validates :first_name
-    validates :family_name
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
+    with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
+      validates :first_name
+      validates :family_name
+      with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
+      end
+    end
   end
- end
-end
 end
