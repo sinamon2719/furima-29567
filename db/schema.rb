@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_091059) do
+ActiveRecord::Schema.define(version: 2020_09_13_082342) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_item_id"
@@ -24,15 +24,25 @@ ActiveRecord::Schema.define(version: 2020_09_09_091059) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "judgment_id", null: false
+    t.integer "shipping_cost_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "shipping_day_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
+    t.integer "price_id"
     t.text "content"
-    t.integer "shipping_cost"
-    t.integer "shipping_days"
-    t.integer "prefecture"
-    t.integer "judgment"
-    t.integer "category"
+    t.integer "shipping_cost_id"
+    t.integer "shipping_days_id"
+    t.integer "prefecture_id"
+    t.integer "judgment_id"
+    t.integer "category_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
