@@ -19,6 +19,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:category_id,:judgment_id)
+    params.require(:article).permit(:category_id,:judgment_id,:shipping_cost_id,:shipping_day_id,:prefecture_id,)
   end
 end
