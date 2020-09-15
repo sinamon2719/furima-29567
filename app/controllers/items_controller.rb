@@ -3,17 +3,14 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:index]
 
-  def index
-    @items = Item.all.order('created_at DESC')
-  end
-
   def new
     @item = Item.new
   end
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.valid?
+      @item.save
       redirect_to root_path
     else
       render :new
