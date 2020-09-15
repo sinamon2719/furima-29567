@@ -27,12 +27,12 @@ RSpec.describe User, type: :model do
           another_user = FactoryBot.build(:user)
           another_user.email = @user.email
           another_user.valid?
-          expect(another_user.errors.full_messages).to include("Email has already been taken")
+          expect(another_user.errors.full_messages).to include('Email has already been taken')
         end
         it 'emailに@が含まれていない時、保存できない' do
           @user.email = 'okigeisai2012'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Email is invalid")
+          expect(@user.errors.full_messages).to include('Email is invalid')
         end
       end
 
@@ -53,7 +53,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include
       end
       it 'パスワードは確認用を含めて2回入力すること' do
-        @user.password_confirmation = ""
+        @user.password_confirmation = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
@@ -96,12 +96,12 @@ RSpec.describe User, type: :model do
       it 'ユーザー本名のフリガナは全角（カタカナ）で入力させること(名字）' do
         @user.family_name_kana = 'あああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name kana 全角カタカナのみで入力して下さい")
+        expect(@user.errors.full_messages).to include('Family name kana 全角カタカナのみで入力して下さい')
       end
       it 'ユーザー本名のフリガナは全角（カタカナ）で入力させること(名前）' do
         @user.first_name_kana = 'あああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana 全角カタカナのみで入力して下さい")
+        expect(@user.errors.full_messages).to include('First name kana 全角カタカナのみで入力して下さい')
       end
       it '生年月日が必須であること' do
         @user.birth_day = ''

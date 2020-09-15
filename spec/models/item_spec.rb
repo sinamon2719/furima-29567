@@ -3,8 +3,7 @@ RSpec.describe Item, type: :model do
   describe Item do
     before do
       @user = FactoryBot.create(:user)
-      @item = FactoryBot.build(:item,user_id:@user.id)
- 
+      @item = FactoryBot.build(:item, user_id: @user.id)
     end
 
     describe '実装の条件' do
@@ -45,12 +44,11 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Price can't be blank")
         end
         it '価格の範囲が、¥300~¥9,999,999の間であること' do
-          
         end
         it '販売価格は半角数字のみ入力可能であること' do
           @item.price = '１１１'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price is not included in the list")
+          expect(@item.errors.full_messages).to include('Price is not included in the list')
         end
       end
     end
