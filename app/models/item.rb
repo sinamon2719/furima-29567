@@ -5,7 +5,6 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-
   with_options presence: true do
     validates :name
     validates :content
@@ -15,7 +14,7 @@ class Item < ApplicationRecord
     validates :category_id
     validates :judgment_id
   end
-  
+
   validates_inclusion_of :price, in: 300..9_999_999
   with_options presence: true, format: { with: /\A[0-9]+\Z/, message: '半角数字を使用してください' } do
     validates :price

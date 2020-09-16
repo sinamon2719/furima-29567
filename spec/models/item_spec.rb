@@ -56,37 +56,37 @@ RSpec.describe Item, type: :model do
         it '価格の範囲が、¥300~¥9,999,999の間であること①299円以下' do
           @item.price = '100'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price is not included in the list")
+          expect(@item.errors.full_messages).to include('Price is not included in the list')
         end
         it '価格の範囲が、¥300~¥9,999,999の間であること②10,000,000円以上' do
           @item.price = '100000000'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price is not included in the list")
+          expect(@item.errors.full_messages).to include('Price is not included in the list')
         end
         it '1が選択された場合は、出品できないこと（日数）' do
           @item.shipping_day_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Shipping day must be other than 1")
+          expect(@item.errors.full_messages).to include('Shipping day must be other than 1')
         end
         it '1が選択された場合は、出品できないこと（カテゴリー）' do
-          @item.category_id= '1'
+          @item.category_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Category must be other than 1")
+          expect(@item.errors.full_messages).to include('Category must be other than 1')
         end
         it '1が選択された場合は、出品できないこと（商品の状態）' do
           @item.judgment_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Judgment must be other than 1")
+          expect(@item.errors.full_messages).to include('Judgment must be other than 1')
         end
         it '1が選択された場合は、出品できないこと（発送地域）' do
           @item.prefecture_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+          expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
         end
         it '1が選択された場合は、出品できないこと（コスト）' do
           @item.shipping_cost_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Shipping cost must be other than 1")
+          expect(@item.errors.full_messages).to include('Shipping cost must be other than 1')
         end
         it '販売価格は半角数字のみ入力可能であること' do
           @item.price = '１１１'
