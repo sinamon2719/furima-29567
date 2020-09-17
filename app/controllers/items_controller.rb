@@ -19,8 +19,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  
-
   def update
     if @item.user_id == current_user.id
       if @item.update(item_params)
@@ -37,12 +35,11 @@ def destroy
   if @item.user_id == current_user.id
     if @item.destroy
       redirect_to :root
-    end
     else
       redirect_to :root
+    end
   end
 end
-
   private
 
   def item_params
