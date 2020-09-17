@@ -19,8 +19,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
+  
 
   def update
     if @item.user_id == current_user.id
@@ -34,8 +33,7 @@ class ItemsController < ApplicationController
     end
   end
   
-  def edit
-  end
+ 
 
   private
 
