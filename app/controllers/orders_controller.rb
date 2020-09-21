@@ -10,14 +10,11 @@ class OrdersController < ApplicationController
 
   def create
     @order = UserOrder.new(order_params)
-    @item = Item.find(params[:item_id])
-    # @order = UserOrder.create(order_params)
     if @order.valid?
       pay_item
       @order.save # バリデーションをクリアした時
       redirect_to root_path
     else
-      # render item_orders    # バリデーションに弾かれた時
       render 'index'
     end
   end
