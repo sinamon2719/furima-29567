@@ -4,7 +4,7 @@ RSpec.describe UserOrder, type: :model do
     before do
       @user = FactoryBot.create(:user)
       @item = FactoryBot.create(:item, user_id: @user.id)
-      @user_order = FactoryBot.build(:user_order,user_id: @user.id,item_id:@item.id)
+      @user_order = FactoryBot.build(:user_order, user_id: @user.id, item_id: @item.id)
     end
 
     describe '実装の条件' do
@@ -51,25 +51,24 @@ RSpec.describe UserOrder, type: :model do
         it '郵便番号にはハイフンが必要であること' do
           @user_order.post_code = '5630027'
           @user_order.valid?
-          expect(@user_order.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+          expect(@user_order.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
         end
         it '電話番号にはハイフンは不要であること' do
-          @user_order.phone_number = "080-6174-9908"
+          @user_order.phone_number = '080-6174-9908'
           @user_order.valid?
-          expect(@user_order.errors.full_messages).to include("Phone number unnecessary hyphen(-)")
+          expect(@user_order.errors.full_messages).to include('Phone number unnecessary hyphen(-)')
         end
         it '電話番号は11桁以内であること' do
           @user_order.phone_number = '123123123123123'
           @user_order.valid?
-          expect(@user_order.errors.full_messages).to include("Phone number is out of setting range")
+          expect(@user_order.errors.full_messages).to include('Phone number is out of setting range')
         end
-        
+
         it 'トークンの情報が必須であること' do
           @user_order.token = ''
           @user_order.valid?
           expect(@user_order.errors.full_messages).to include("Token can't be blank")
         end
-        
       end
     end
   end
