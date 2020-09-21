@@ -67,3 +67,4 @@ gem 'rails_12factor'
 end
 gem 'active_hash'
 gem 'jquery-rails'
+gem 'payjp'
