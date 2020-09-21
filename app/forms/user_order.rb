@@ -14,11 +14,15 @@ class UserOrder
     validates :token
   end
 
+  validates :prefecture_id,numericality: { other_than: 1 }
   validates :phone_number, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10000000000, message: "is out of setting range"}
   with_options presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"} do
     validates :post_code
   end
-
+  with_options presence: true, format: {with:/\A\d{11}\z/, message: "unnecessary hyphen(-)"} do
+    validates :phone_number
+  end
+  
 
 
   def save
