@@ -1,7 +1,8 @@
 <%= render "shared/second-header"%>
-
 <div class='transaction-contents'>
   <div class='transaction-main'>
+  <% breadcrumb :orders %>
+  <%= breadcrumbs separator: " &rsaquo; " %> 
     <h1 class='transaction-title-text'>
       購入内容の確認
     </h1>

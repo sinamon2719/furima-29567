@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
     @items = Item.includes(:user).order('created_at DESC')
   end
 
+  def show
+    # binding.pry
+  end
+
   def new
     @item = Item.new
   end
