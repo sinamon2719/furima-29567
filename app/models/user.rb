@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :user_items
   has_many :items
+  has_many :sns_credentials
 
   validates :nickname, presence: true
   validates :email, presence: true
@@ -29,4 +29,6 @@ class User < ApplicationRecord
     validates :first_name_kana
     validates :family_name_kana
   end
+
+  
 end

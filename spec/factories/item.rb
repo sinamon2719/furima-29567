@@ -1,4 +1,7 @@
 FactoryBot.define do
+  before do
+    @item.image = fixture_file_upload('public/staff1.jpg')
+  end
   factory :item do
     name { Faker::Name.initials(number: 2) }
     price { 350 }
@@ -10,5 +13,6 @@ FactoryBot.define do
     category_id {3}
     user_id {1}
     association :user
+    
   end
 end

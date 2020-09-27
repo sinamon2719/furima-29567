@@ -14,11 +14,11 @@ class UserOrder
   end
 
   validates :prefecture_id, numericality: { other_than: 1 }
-  validates :phone_number, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10_000_000_000, message: 'is out of setting range' }
-  with_options presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)'} do
+  validates :phone_number, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10_000_000_000, message: '桁数が違います' }
+  with_options presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'はハイフンを含んでください'} do
     validates :post_code
   end
-  with_options presence: true, format: {with: /\A\d{11}\z/, message: 'unnecessary hyphen(-)'} do
+  with_options presence: true, format: {with: /\A\d{11}\z/, message: 'の番号が違います'} do
     validates :phone_number
   end
 
