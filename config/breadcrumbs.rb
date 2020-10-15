@@ -3,7 +3,11 @@ crumb :root do
 end
 
 crumb :items do
-  item = params[:id].to_i
+  if params[:id].present?
+    item = params[:id]
+  else
+    item = params[:item_id]
+  end
   link "商品詳細", item_path(item)
   parent :root
 end

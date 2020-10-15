@@ -21,6 +21,9 @@ class UserOrder
   with_options presence: true, format: {with: /\A\d{11}\z/, message: 'の番号が違います'} do
     validates :phone_number
   end
+  with_options presence: true, format: {with: /\A\d{11}\z/, message: 'はハイフンは不要です'} do
+    validates :phone_number
+  end
 
   def save
     user_item = UserItem.create(user_id: user_id, item_id: item_id)

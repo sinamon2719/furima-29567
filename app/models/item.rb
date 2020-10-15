@@ -13,6 +13,7 @@ class Item < ApplicationRecord
     validates :prefecture_id
     validates :category_id
     validates :judgment_id
+    validates :image
   end
 
   validates_inclusion_of :price, in: 300..9_999_999

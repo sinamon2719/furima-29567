@@ -4,6 +4,10 @@ RSpec.describe UserOrder, type: :model do
     before do
       @user = FactoryBot.create(:user)
       @item = FactoryBot.create(:item, user_id: @user.id)
+      @item = FactoryBot.build(:item, user_id: @user.id)
+      @item.image = fixture_file_upload('public/staff1.jpg')
+      @item.save
+      
       @user_order = FactoryBot.build(:user_order, user_id: @user.id, item_id: @item.id)
     end
 
@@ -51,17 +55,17 @@ RSpec.describe UserOrder, type: :model do
         it '郵便番号にはハイフンが必要であること' do
           @user_order.post_code = '5630027'
           @user_order.valid?
-          expect(@user_order.errors.full_messages).to include("郵便番号is invalid. Include hyphen(-)")
+          expect(@user_order.errors.full_messages).to include("郵便番号はハイフンを含んでください")
         end
         it '電話番号にはハイフンは不要であること' do
           @user_order.phone_number = '080-6174-9908'
           @user_order.valid?
-          expect(@user_order.errors.full_messages).to include("電話番号unnecessary hyphen(-)")
+          expect(@user_order.errors.full_messages).to include("電話番号はハイフンは不要です")
         end
         it '電話番号は11桁以内であること' do
           @user_order.phone_number = '123123123123123'
           @user_order.valid?
-          expect(@user_order.errors.full_messages).to include("電話番号is out of setting range")
+          expect(@user_order.errors.full_messages).to include("電話番号桁数が違います")
         end
 
         it 'トークンの情報が必須であること' do

@@ -4,7 +4,9 @@ RSpec.describe Item, type: :model do
     before do
       @user = FactoryBot.create(:user)
       @item = FactoryBot.build(:item, user_id: @user.id)
-
+      @item = FactoryBot.build(:item)
+      @item.image = fixture_file_upload('public/staff1.jpg')
+      @item.save
     end
 
     describe '実装の条件' do
